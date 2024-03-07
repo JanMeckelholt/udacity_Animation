@@ -16,13 +16,16 @@
 
 package com.google.samples.propertyanimation
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import com.google.samples.propertyanimation.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    lateinit var binding : ActivityMainBinding
 
     lateinit var star: ImageView
     lateinit var rotateButton: Button
@@ -34,15 +37,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        star = findViewById(R.id.star)
-        rotateButton = findViewById<Button>(R.id.rotateButton)
-        translateButton = findViewById<Button>(R.id.translateButton)
-        scaleButton = findViewById<Button>(R.id.scaleButton)
-        fadeButton = findViewById<Button>(R.id.fadeButton)
-        colorizeButton = findViewById<Button>(R.id.colorizeButton)
-        showerButton = findViewById<Button>(R.id.showerButton)
+        star = binding.star
+        rotateButton = binding.rotateButton
+        translateButton = binding.translateButton
+        scaleButton = binding.scaleButton
+        fadeButton = binding.fadeButton
+        colorizeButton = binding.colorizeButton
+        showerButton = binding.showerButton
 
         rotateButton.setOnClickListener {
             rotater()
